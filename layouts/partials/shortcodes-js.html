@@ -1,0 +1,75 @@
+{{- if .HasShortcode "tips" -}}
+<script>
+function showTips(ele,txt) {
+  let tip = document.createElement("div");
+  let rect = ele.getBoundingClientRect();
+  tip.id = "tip";
+  tip.innerHTML = txt;
+  tip.style = "position:fixed;color:#999;background:#202020;padding:.2rem .5rem;";
+  if(rect.top > (window.screen.height+ele.offsetHeight)/2){
+    tip.style.left = rect.left + "px";
+    tip.style.top = rect.top - ele.offsetHeight + "px";
+  } else {
+    tip.style.left = rect.left + "px";
+    tip.style.top = rect.top + ele.offsetHeight + "px";
+  }
+  document.body.append(tip);
+  ele.onmouseout = function (){tip.remove()};
+}
+</script>
+{{- end -}}
+{{- if .HasShortcode "timer" -}}
+<script>
+/**
+  * Run TickTimer in elem id innerHTML
+  *
+  * @param {String} id  Elem id name
+  * @param {string} t   UTC time string
+  * @param {String} fmt See 'fmtTime()'
+  *
+  */
+function tickTimer(id,t,fmt) {
+  let ele = document.getElementById(id);
+  let nowTime = Date.now();
+  let specTime = Date.parse(t);
+  if (isNaN(specTime)) {
+     elem.innerHTML = specTime;
+     return;
+  }
+  let diffTime = nowTime - specTime;
+  ele.innerHTML= fmtTime(diffTime,fmt);
+}
+function fmtTime(dtime,fmt) {
+  let ret = fmt, t = humanTime(dtime);
+  ret = ret.replace(/%\d*y/, pad0(3,t.year));
+  ret = ret.replace(/%\d*d/, pad0(3,t.day));
+  ret = ret.replace(/%\d*h/, pad0(2,t.hour));
+  ret = ret.replace(/%\d*m/, pad0(2,t.min));
+  ret = ret.replace(/%\d*s/, pad0(2,t.sec));
+  ret = ret.replace(/%\d*e/, pad0(3,t.msec));
+  return ret;
+}
+function pad0(z,n) {
+  let nstr = n.toString();
+  let nlen = nstr.length;
+  for (let i=nlen;i<z;i++) {
+    nstr = '0' + nstr;
+  }
+  return nstr;
+}
+function humanTime(t) {
+  let ms = Math.abs(t);
+  s1 = 1000,
+  m1 = s1*60,
+  h1 = m1*60,
+  d1 = h1*24,
+  y1 = d1*365,
+  yy = Math.floor(ms/y1),ms = ms-yy*y1,
+  dd = Math.floor(ms/d1),ms = ms-dd*d1,
+  hh = Math.floor(ms/h1),ms = ms-hh*h1,
+  mm = Math.floor(ms/m1),ms = ms-mm*m1,
+  ss = Math.floor(ms/s1),ms = ms-ss*s1;
+  return { year:yy, day:dd, hour:hh, min:mm, sec:ss, msec:ms }
+}
+</script>
+{{- end -}}

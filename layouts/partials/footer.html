@@ -1,0 +1,10 @@
+<footer style="text-align:right;margin:5rem .2rem .2rem .2rem;">
+  <div>{{- partial "taxo.html" . -}}</div>
+  <div>&copy; 2020 - {{ now.Year }}</div>
+  {{ if .IsHome }}
+    {{ if gt .Paginator.TotalPages 1 }}
+      {{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages}}
+    {{ end }}
+  {{ end }}
+  <small>{{ .Kind }} {{ .Type }}</small>
+</footer>

@@ -1,0 +1,45 @@
+{{- if "true" -}}
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+html {
+color:#aaa;
+background:#000;
+overflow:hidden;
+height:100%;
+font-family:serif;
+text-align:center;
+font-style:italic;
+}
+.error{
+width:100%;
+position:absolute;
+top:0;
+bottom:0;
+margin:auto;
+font-size:80px;
+height:150px;
+line-height:150px;
+}
+.info{
+width:100%;
+position:absolute;
+top:80px;
+bottom:0;
+left:0;
+right:0;
+margin:auto;
+font-size:18px;
+height:40px;
+line-height:40px;
+}
+a{all:unset;cursor:pointer;}
+</style>
+</head>
+<body>
+  <div class="error"><a href="/">404</a></div>
+  <span class="info"><a href="/">File not found</a></span>
+</body>
+</html>
+{{- end -}}

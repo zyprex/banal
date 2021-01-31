@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{- partial "shortcodes-css.html" . -}}
+<div class="Hp">
+  <div style="float:right;width:50px;height:50px;margin:11px;">
+    <img src="{{ $.Site.Params.avatar }}" style="border-radius:100%;">
+  </div>
+  <em class="T">{{.Title}}</em><br>
+  <em>{{ .Date.Format "2006/01/02 Mon 15:04" }}</em>
+</div>
+<small>
+  <center style="margin:2rem 0;">
+  CC <a href="https://creativecommons.org/licenses/by-nc/4.0/">BY-NC 4.0</a>
+  &bull; Powerd By <a href="https://gohugo.io/">Hugo {{ hugo.Version }}</a>
+  &bull; Theme Banal
+  &bull; article count: {{ len .Site.RegularPages }} pages
+ </center>
+</small>
+<div id="C">
+  {{ .Content }}
+</div>
+<script type="text/javascript" src="/js/norm.js"></script>
+{{- partial "shortcodes-js.html" . -}}
+{{ end }}

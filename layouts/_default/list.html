@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <div class="T">{{ .Title }}<sup>{{ len .Pages }}<sup></div>
+  {{- range .Pages.ByDate -}}
+    <div>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      {{- if .IsNode -}}
+        <sup>{{ len .Pages }}</sup>
+      {{- end -}}
+    </div>
+  {{- end -}}
+{{ end }}

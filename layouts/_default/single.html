@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{- partial "shortcodes-css.html" . -}}
+<div class="Hp">
+  <em class="T">{{ .Title }}</em><br>
+  <em>{{ .Date.Format "2006/01/02 Mon 15:04" }}</em>
+</div>
+{{- if .Params.toc -}}
+  <nav class="toc">
+    <b onclick="nav_toc.hidden=!nav_toc.hidden;
+       this.innerText=this.innerText=='+ catalogue'?'- catalogue':'+ catalogue'">+ catalogue</b>
+  <div id="nav_toc" hidden>
+    {{ .TableOfContents }}
+  </div>
+  </nav>
+{{- end -}}
+<div id="C">
+  {{ .Content }}
+</div>
+<div class="pager">
+  {{- with .Site.RegularPages.Next . -}}
+  <br/> ▲ <a href="{{.RelPermalink}}">{{ .Title }}</a>
+  {{- end -}}
+  {{- with .Site.RegularPages.Prev . -}}
+  <br/> ▼ <a href="{{.RelPermalink}}">{{ .Title }}</a>
+  {{- end -}}
+</div>
+<script type="text/javascript" src="/js/norm.js"></script>
+{{- partial "shortcodes-js.html" . -}}
+{{ end }}

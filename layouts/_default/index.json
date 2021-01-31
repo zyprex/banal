@@ -1,0 +1,26 @@
+{
+  "0":[
+    {{ range where .Site.Pages "Kind" "section" }}
+      {{ dict "n" .Title "u" .Permalink | jsonify }},
+    {{ end }}
+  ],
+  {{ range $taxonomy_term, $taxonomy := .Site.Taxonomies }}
+  "{{ $taxonomy_term }}":[
+    {{  range $key, $value := $taxonomy }}
+      {{ dict "n" $key "u" (printf "/%s/%s/" $taxonomy_term $key) | jsonify }},
+    {{ end }}
+  ],
+  {{ end }}
+  "1":[
+    {{ range .Site.RegularPages }}
+    {{ $d := dict "n" .Title "u" .Permalink "c" .Plain }}
+    {{ with or .Params.excerpt .Params.description }}
+      {{ $d = merge $d (dict "d" .) }}
+    {{ end }}
+    {{ with .Keywords }}
+      {{ $d = merge $d (dict "k" .) }}
+    {{ end }}
+    {{ $d | jsonify }},
+    {{ end }}
+  ]
+}

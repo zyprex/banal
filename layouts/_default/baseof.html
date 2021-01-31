@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . -}}
+  <title>
+    {{- if ne .Title .Site.Title -}}
+      {{ .Title }} ·
+    {{- end -}}
+    {{ .Site.Title }}
+  </title>
+  <body>
+    <div class="fence{{ if and (ne .Kind "home") (ne .Kind "page") }}-list{{end}}">
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
+    </div>
+  </body>
+</html>

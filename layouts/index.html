@@ -1,0 +1,34 @@
+{{ define "main" }}
+  {{- range  .Paginator.Pages.GroupByDate "2006" -}}
+    <div class="T">{{ .Key }}</div>
+    {{- range .Pages -}}
+    <section>
+      <header class="H">
+        {{- .Date.Format "01-02" -}}
+        <a class="T" href="{{ .Permalink }}">{{ .Title }}</a>
+        {{- if .Draft }}<b style="color:red;">(draft)</b>{{- end }}
+        <div class="excerpt">
+          {{- with or .Params.excerpt .Params.description }}{{.}}{{- end }}
+        </div>
+        <div style="margin-left:auto;">
+          {{- partial "taxo.html" . -}}
+        </div>
+      </header>
+      <div class="summary">
+        {{ .Summary | plainify | safeHTML }}
+        {{- if .Truncated -}}
+        <a href="{{ .Permalink }}"> (Read more ... {{ .WordCount }} words) </a>
+        {{- end -}}
+      </div>
+    </section>
+    {{- end -}}
+  {{- end -}}
+  <section class="pager">
+  {{- if .Paginator.HasPrev -}}
+    <a href="{{ .Paginator.Prev.URL }}">◀ Prev</a>
+  {{- end -}}
+  {{- if .Paginator.HasNext -}}
+    <a style="float:right;" href="{{ .Paginator.Next.URL }}">Next ▶</a>
+  {{- end -}}
+  </section>
+{{ end }}

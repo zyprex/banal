@@ -1,0 +1,5 @@
+<div class="sc--fdM">
+  <div style="background:{{ .Get "bg" | default "#16150b" }};" class="sc--fdT">{{ .Get "title" | markdownify }}</div>
+  <button class="sc--fdB" onclick="this.nextSibling.hidden = !this.nextSibling.hidden;this.innerHTML=this.innerHTML=='+'?'-':'+';">{{if ne (.Get "open") "true" }}+{{else}}-{{ end }}</button>
+  <div class="sc--fdC" {{if ne (.Get "open") "true" }}hidden{{ end }}>{{ .Inner | markdownify }}</div>
+</div>

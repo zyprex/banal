@@ -1,0 +1,8 @@
+<section>
+{{- range (.GetTerms "tags") -}}
+<a class="taxo" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+{{- end -}}
+{{- range (.GetTerms "categories") -}}
+<a class="taxo" href="{{ .Permalink }}">@{{ .LinkTitle }}</a>
+{{- end -}}
+</section>
