@@ -1,4 +1,4 @@
 <span id="timerTick-{{.Get "id"}}"  title="{{ .Get "time" | default "2020-12-30 01:00:00" }}"></span>
 <script>
-setInterval("tickTimer('timerTick-{{.Get "id"}}', '{{.Get "time" | default "2020-12-30 01:00:00" }}','{{.Get "format" | default " %y Year %d  Day %h Hour %m Min %s Sec %e Milisec " }}')", {{ .Get "interval" | default "1"}});
+setInterval("tickTimer('timerTick-{{.Get "id"}}', '{{.Get "time" | default "2020-12-30 01:00:00" }}','{{.Get "format" | default " %y Year %d  Day %h Hour %m Min %s Sec %e Millisec " }}')", {{ .Get "interval" | default "1"}});
 </script>
