@@ -1,5 +1,4 @@
 {{ define "main" }}
-{{- partial "shortcodes-css.html" . -}}
 <div class="Hp">
   <em class="T">{{ .Title }}</em><br>
   <em>{{ .Date.Format "2006/01/02 Mon 15:04" }}</em>
@@ -24,6 +23,4 @@
   <br/> ▼ <a href="{{.RelPermalink}}">{{ .Title }}</a>
   {{- end -}}
 </div>
-<script type="text/javascript" src="/js/norm.js"></script>
-{{- partial "shortcodes-js.html" . -}}
 {{ end }}
