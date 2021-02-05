@@ -1,0 +1,2 @@
+{{ $id := ( .Get 0 | md5 ) }}
+<canvas id="{{ $id }}"></canvas><script type="text/javascript">new Chart("{{ $id }}", {{ .Inner | safeJS }});</script>
