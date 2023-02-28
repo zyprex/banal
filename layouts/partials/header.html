@@ -1,5 +1,8 @@
+<div style="height:2em;margin-top:1em;margin-bottom:1em;font-size:1.1em;overflow-x:scroll;overflow-y:hidden;white-space:nowrap;">
 <nav>
+|
 {{- range .Site.Menus.main -}}
-<a href="{{ .URL }}">{{ .Name }}&nbsp;</a>
+&emsp;<a href="{{ .URL }}">{{ .Name }}</a>&emsp;|
 {{- end -}}
 </nav>
+</div>

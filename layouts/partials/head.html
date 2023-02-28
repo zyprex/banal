@@ -2,9 +2,9 @@
 {{ hugo.Generator }}
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 {{ with $.Site.Params.favicon }}
-<link rel="icon" type="image/png" href="{{.}}">
+<link rel="icon" type="image/png" href="{{ $.Site.BaseURL }}">
 {{ end }}
-<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="{{ $.Site.BaseURL }}/css/main.css">
 {{ if .Params.math }}{{- partial "lib/katex.html" . -}}{{ end }}
 {{ if .Params.mermaid }}{{- partial "lib/mermaid-js.html" . -}}{{ end }}
 {{ if .Params.chart }}{{- partial "lib/chart-js.html" . -}}{{ end }}

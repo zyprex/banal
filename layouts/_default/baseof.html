@@ -2,7 +2,7 @@
 <html>
   {{- partial "head.html" . -}}
   {{- if .IsPage -}}
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  <link rel="stylesheet" type="text/css" href="{{ $.Site.BaseURL }}/css/syntax.css">
     {{- partial "shortcodes-css.html" . -}}
   {{- end -}}
   <title>
@@ -18,7 +18,7 @@
     {{- partial "footer.html" . -}}
     </div>
     {{- if .IsPage -}}
-      <script defer type="application/javascript" src="/js/norm.js"></script>
+      <script defer type="application/javascript" src="{{ $.Site.BaseURL }}/js/norm.js"></script>
       {{- partial "shortcodes-js.html" . -}}
     {{- end -}}
   </body>
